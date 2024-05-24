@@ -97,6 +97,29 @@
                 }
             }).addTo(map_ac1ea4c2d1da374ddb30abe08dbd1413);
         });
+        // Adding CSV data
+        $.get("../data/schoolmaps.csv", function (csvData) {
+            var csvRows = csvData.split("\n").slice(1);
+
+            csvRows.forEach(function (row) {
+                var cols = row.split(",");
+                var schoolName = cols[0].trim();
+                var address = cols[1].trim();
+                var lat = parseFloat(cols[2].trim());
+                var lng = parseFloat(cols[3].trim());
+
+                var circleMarker = L.circleMarker([lat, lng], {
+                    color: 'blue',
+                    radius: 10,
+                    fillColor: 'blue',
+                    fillOpacity: 0.7
+                }).addTo(map_ac1ea4c2d1da374ddb30abe08dbd1413);
+
+                var popupContent = "<b>學校名稱:</b> " + schoolName + "<br>" +
+                    "<b>地址:</b> " + address;
+                circleMarker.bindPopup(popupContent);
+            });
+        });
 
         var marker_57860fa0b1e591b22b3132710549fbe3 = L.marker(
             [25.0948074, 121.5290357],

@@ -4,7 +4,7 @@ import geopandas as gpd
 from get_youbike_data import get_all_mrt_station
 import plot_map
 
-y, m, d, h = 2024, 2, 1, 0  # year, month, day, hour
+y, m, d, h = 2024, 2, 19, 8  # year, month, day, hour
 time = datetime.datetime(y, m, d, h, 0).strftime("%Y-%m-%d %H:%M")
 
 ''' choose mrt {type mrt = in <-> ubike = return} {mrt = out <-> ubike = rent}'''
